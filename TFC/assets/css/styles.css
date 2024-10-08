@@ -1,0 +1,188 @@
+/* Reset de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Estilos para el encabezado */
+header {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-nav .nav-link {
+    margin-left: 20px;
+    color: white;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f39c12;
+}
+
+/* Estilos para la sección Parallax */
+.parallax {
+    background-image: url('../../uploads/imagen2.jpg'); /* Cambia la imagen */
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.parallax-content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.parallax .btn {
+    background: #f39c12;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.parallax .btn:hover {
+    background: #e67e22;
+}
+
+.service-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.service-item {
+    width: 30%;
+    margin: 20px 0;
+}
+
+/* ========================
+   Estilos del Modal
+   ======================== */
+   .footer {
+    padding: 20px 0;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    font-size: 1.5em; /* Tamaño de los iconos */
+    transition: transform 0.3s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2); /* Efecto de zoom al pasar el ratón */
+}
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.9) !important; /* Fondo blanco semi-transparente */
+    border: 2px solid #ff0000 !important; /* Borde azul */
+    border-radius: 15px !important; /* Esquinas más redondeadas */
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2) !important; /* Sombra más intensa */
+}
+
+.modal-header {
+    border-bottom: 2px solid #007bff !important; /* Borde inferior azul */
+}
+
+.modal-title {
+    color: #007bff !important; /* Color del título azul */
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 30px !important; /* Espaciado interior */
+}
+
+.btn-primary {
+    background-color: #007bff !important; /* Color de fondo del botón */
+    border: none !important; /* Sin borde */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3 !important; /* Color más oscuro al pasar el ratón */
+}
+
+.modal-footer {
+    border-top: none !important; /* Quitar el borde superior */
+    padding: 15px !important; /* Espaciado interior */
+}
+
+/* Estilos para los globitos */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6); /* Fondo blanco semi-transparente */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Posicionamiento de globitos */
+.bubble.one {
+    width: 60px;
+    height: 60px;
+    top: 10%;
+    left: 15%;
+    animation: float 5s ease-in-out infinite; /* Efecto de flotación */
+}
+
+.bubble.two {
+    width: 80px;
+    height: 80px;
+    bottom: 10%;
+    right: 20%;
+    animation: float 7s ease-in-out infinite; /* Efecto de flotación */
+}
+
+.bubble.three {
+    width: 40px;
+    height: 40px;
+    top: 60%;
+    left: 50%;
+    animation: float 6s ease-in-out infinite; /* Efecto de flotación */
+}
+
+/* Animación de flotación */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+section {
+    position: relative; /* Para poder posicionar elementos sobre esta sección */
+    padding: 50px 0; /* Espaciado superior e inferior */
+    margin: 0; /* Sin margen */
+}
+
+.bg-light {
+    background: transparent; /* Sin fondo sólido para la sección de contacto */
+}
+
+.spacer {
+    height: 50px; /* Espacio entre secciones */
+    background: transparent; /* Espacio vacío para ver el fondo */
+}
