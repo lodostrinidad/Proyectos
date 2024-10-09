@@ -52,58 +52,40 @@
 
     <div class="spacer"></div> <!-- Espaciador -->
 
-<section id="about" class="bg-light">
-    <h2>Sobre Mí</h2>
-    <p>Información sobre mí y el proyecto. Aquí puedes incluir detalles interesantes.</p>
-</section>
+    <section id="parallax-section" class="parallax-bg">
+    <div class="section" id="about">
+        <h2>Sobre Mí</h2>
+        <p>Información interesante sobre mí y mi proyecto.</p>
+    </div>
 
-<div class="spacer"></div> <!-- Espaciador -->
+    <div class="section" id="services">
+        <h2>Servicios</h2>
+        <p>Descripción de los servicios que ofreces.</p>
+    </div>
 
-<!-- Imagen decorativa entre secciones -->
-<div class="decorative-image">
-    <img src="path/to/your/image.jpg" alt="Imagen decorativa" style="width: 100%; height: auto;">
-</div>
-
-<div class="spacer"></div> <!-- Espaciador -->
-
-<section id="services">
-    <h2>Servicios</h2>
-    <div class="service-list">
-        <div class="service-item">
-            <h3>Servicio 1</h3>
-            <p>Descripción del servicio 1.</p>
-        </div>
-        <div class="service-item">
-            <h3>Servicio 2</h3>
-            <p>Descripción del servicio 2.</p>
-        </div>
-        <div class="service-item">
-            <h3>Servicio 3</h3>
-            <p>Descripción del servicio 3.</p>
-        </div>
+    <div class="section" id="contact">
+        <h2>Contacto</h2>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
     </div>
 </section>
 
-<div class="spacer"></div> <!-- Espaciador -->
 
-<section id="contact" class="bg-light">
-    <h2>Contacto</h2>
-    <form id="contact-form">
-        <div class="form-group">
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="message">Mensaje:</label>
-            <textarea id="message" name="message" required></textarea>
-        </div>
-        <button type="submit">Enviar</button>
-    </form>
-</section>
+
+<div class="spacer"></div> <!-- Espaciador -->
 
 <footer class="footer bg-dark text-white">
     <div class="container text-center">
@@ -116,9 +98,6 @@
         </div>
     </div>
 </footer>
-
-
-
 
     <!-- Modal para Registro/Login -->
     <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">

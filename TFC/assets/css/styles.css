@@ -133,56 +133,67 @@ header {
     padding: 15px !important; /* Espaciado interior */
 }
 
-/* Estilos para los globitos */
-.bubble {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.6); /* Fondo blanco semi-transparente */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Posicionamiento de globitos */
-.bubble.one {
-    width: 60px;
-    height: 60px;
-    top: 10%;
-    left: 15%;
-    animation: float 5s ease-in-out infinite; /* Efecto de flotación */
-}
-
-.bubble.two {
-    width: 80px;
-    height: 80px;
-    bottom: 10%;
-    right: 20%;
-    animation: float 7s ease-in-out infinite; /* Efecto de flotación */
-}
-
-.bubble.three {
-    width: 40px;
-    height: 40px;
-    top: 60%;
-    left: 50%;
-    animation: float 6s ease-in-out infinite; /* Efecto de flotación */
-}
-
-/* Animación de flotación */
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
-}
-section {
-    position: relative; /* Para poder posicionar elementos sobre esta sección */
-    padding: 50px 0; /* Espaciado superior e inferior */
-    margin: 0; /* Sin margen */
-}
 
 .bg-light {
     background: transparent; /* Sin fondo sólido para la sección de contacto */
 }
 
-.spacer {
-    height: 50px; /* Espacio entre secciones */
-    background: transparent; /* Espacio vacío para ver el fondo */
+/* Parallax Section */
+.parallax-bg {
+    background-image: url('../../uploads/imagen3.jpg'); /* Aquí pones la imagen de fondo */
+    background-attachment: fixed; /* Esto es lo que crea el efecto parallax */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 100px 0; /* Espaciado general para cada sección */
+}
+
+/* General styles for each section */
+.section {
+    background-color: rgba(255, 255, 255, 0.6); /* Fondo blanco semitransparente para el contenido */
+    padding: 50px;
+    margin: 50px auto;
+    max-width: 1200px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra suave para destacar cada sección */
+}
+
+/* Espaciado entre secciones */
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.section p,
+.section form {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Estilos adicionales */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Media queries para móvil */
+@media (max-width: 768px) {
+    .parallax-bg {
+        background-attachment: scroll; /* Deshabilitar parallax en dispositivos móviles */
+    }
+
+    .section {
+        padding: 30px;
+    }
 }
