@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraper de Ofertas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-container">
+          <h1 class="logo">Workout Events Job Finder</h1>
+        </div>
+        
+        <nav class="header-nav">
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+        
+        <div class="header-btn-container">
+            <button id="start-scraper" class="header-btn">
+              <i class="fas fa-play-circle"></i> Iniciar Scraping
+            </button>
+            <button id="export-excel-btn" class="header-btn">
+              <i class="fas fa-file-excel"></i> Exportar a Excel
+            </button>
+            <button id="export-database-btn" class="header-btn">
+              <i class="fas fa-database"></i> Exportar a Base de Datos
+            </button>
+          </div>
+          
+      </header>      
+      <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-title">
+                <h2>Filtrar Ofertas</h2>
+                <i class="fas fa-filter"></i>
+            </div>
+            <form id="filter-form">
+                <!-- Filtrar por palabra clave -->
+                <div class="filter-group">
+                    <label for="keyword">
+                        <i class="fas fa-search"></i> Palabra Clave
+                    </label>
+                    <input type="text" id="keyword" name="keyword" placeholder="Buscar empleo...">
+                </div>
+                <!-- Filtrar por ubicación -->
+                <div class="filter-group">
+                    <label for="location">
+                        <i class="fas fa-map-marker-alt"></i> Ubicación
+                    </label>
+                    <select id="location" name="location">
+                        <option value="all">Todas</option>
+                        <option value="madrid">Madrid</option>
+                        <option value="barcelona">Barcelona</option>
+                        <option value="sevilla">Sevilla</option>
+                        <option value="valencia">Valencia</option>
+                        <option value="malaga">Malaga</option>
+                        <option value="ceuta">Ceuta</option>
+                    </select>
+                </div>
+                <!-- Filtrar por fecha de publicación -->
+                <div class="filter-group">
+                    <label for="date">
+                        <i class="fas fa-calendar-alt"></i> Fecha de Publicación
+                    </label>
+                    <select id="date" name="date">
+                        <option value="ANY">Cualquier fecha</option>
+                        <option value="24h">Últimas 24 horas</option>
+                        <option value="7d">Últimos 7 días</option>
+                        <option value="15d">Últimos 15 días</option>
+                    </select>
+                </div>
+                <!-- Filtrar por tipo de contrato -->
+                <div class="filter-group">
+                    <label for="contract-type">
+                        <i class="fas fa-briefcase"></i> Tipo de Contrato
+                    </label>
+                    <select id="contract-type" name="contract-type">
+                        <option value="all">Cualquier tipo</option>
+                        <option value="full-time">Tiempo Completo</option>
+                        <option value="part-time">Medio Tiempo</option>
+                        <option value="freelance">Freelance</option>
+                        <option value="temporary">Temporal</option>
+                    </select>
+                </div>
+                <!-- Filtrar por rango salarial -->
+                <div class="filter-group">
+                    <label for="salary-range">
+                        <i class="fas fa-money-bill-wave"></i> Rango Salarial
+                    </label>
+                    <div class="salary-inputs">
+                        <input type="number" id="min-salary" name="min-salary" placeholder="Mínimo (€)">
+                        <span>-</span>
+                        <input type="number" id="max-salary" name="max-salary" placeholder="Máximo (€)">
+                    </div>
+                </div>
+                <!-- Botón para aplicar los filtros -->
+                <div class="filter-group">
+                    <button type="submit" class="filter-btn">
+                        <i class="fas fa-check-circle"></i> Aplicar Filtros
+                    </button>
+                </div>
+            </form>
+        </aside>
+
+        <main>
+            <div class="combined-container">
+                <!-- Total de títulos extraídos -->
+                <div id="total-titles" class="total-titles" style="display: none;">
+                    <h2>Total de Ofertas: <span id="total-count">0</span></h2>
+                </div>
+                <!-- Contenedor para mostrar las ofertas -->
+                <div id="job-list">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Ubicación</th>
+                                <th>VER</th>
+                            </tr>
+                        </thead>
+                        <tbody id="job-table-body">
+                            <!-- Aquí se insertarán dinámicamente las filas de trabajos -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>          
+    
+        
+    </div>
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p>Email: <a href="mailto:info@workoutevents.com">info@workoutevents.com</a></p>
+                <p>Teléfono: <a href="tel:+34123456789">+34 123 456 789</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <ul class="social-links">
+                    <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Información</h4>
+                <p><a href="#sobre-nosotros">Sobre Nosotros</a></p>
+                <p><a href="#politica-privacidad">Política de Privacidad</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Workout Events. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+      
+
+    <script src="script.js"></script>
+    
+    <!-- Popup de carga -->
+    <div id="loading-popup" class="loading-popup">
+        <div class="loading-content">
+            <h2>Cargando datos...</h2>
+            <div class="loading-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

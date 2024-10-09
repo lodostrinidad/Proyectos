@@ -1,0 +1,566 @@
+/* ----------------------------------- 
+   Estilos Generales 
+----------------------------------- */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Contenedor principal */
+.container {
+  display: flex; /* Usar Flexbox para el diseño */
+  flex: 1; /* Permite que el contenedor ocupe el espacio restante */
+}
+
+/* ----------------------------------- 
+ Estilos del Header 
+----------------------------------- */
+header {
+  position: sticky; /* Permite que el header se mantenga en la parte superior */
+  top: 0; /* Fija el header a la parte superior */
+  z-index: 1000; /* Asegura que esté sobre otros elementos */
+  background-color: #c8102e; /* Rojo */
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Estilos del Header Principal */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(230, 57, 70, 0.95); /* Fondo rojo con ligera transparencia */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  flex: 1;
+}
+
+.logo {
+  font-size: 28px;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 2px;
+}
+
+.header-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.header-nav ul li {
+  display: inline-block;
+}
+
+.header-nav ul li a {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.header-nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco traslúcido al hover */
+}
+
+.header-btn-container {
+  margin-left: 20px;
+  display: flex;
+  gap: 10px; /* Espacio entre botones */
+}
+
+.header-btn {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #e63946; /* Rojo principal */
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-btn i {
+  font-size: 20px;
+}
+
+.header-btn:hover {
+  background-color: #f1f1f1;
+  transform: scale(1.05);
+}
+
+.header-btn:active {
+  background-color: #e0e0e0;
+  transform: scale(1);
+}
+
+/* Responsive para el Header */
+@media (max-width: 768px) {
+  .main-header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .header-nav ul {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .header-btn-container {
+      margin-top: 10px;
+  }
+}
+
+/* ----------------------------------- 
+ Estilos del Aside (Barra Lateral) 
+----------------------------------- */
+aside {
+  background-color: #333; /* Negro */
+  color: white;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Title */
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sidebar-title h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+.sidebar-title i {
+  font-size: 20px;
+  color: #e63946;
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group label {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.filter-group input, 
+.filter-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.salary-inputs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.salary-inputs input {
+  width: calc(50% - 10px);
+}
+
+.filter-group button {
+  width: 100%;
+  padding: 12px;
+  background-color: #e63946;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.filter-group button:hover {
+  background-color: #d62828;
+}
+
+.filter-group i {
+  margin-right: 8px;
+}
+
+.filter-btn i {
+  margin-right: 5px;
+}
+
+/* Ajusta el formulario para llenar el espacio disponible */
+#filter-form {
+  flex: 1; /* Hace que el formulario ocupe todo el espacio restante */
+}
+
+/* ----------------------------------- 
+ Estilos del Main (Contenido Principal) 
+----------------------------------- */
+main {
+  flex: 1;
+  display: flex; /* Asegura que aside y main estén alineados */
+  padding: 20px;
+}
+
+/* Contenedor principal de las tarjetas */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+/* Tarjetas de ubicación */
+.location-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.location-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.location-card h3 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Contenedor de trabajos que se despliega */
+.jobs-container {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  margin-top: 10px;
+}
+
+/* Mostrar trabajos cuando se despliega */
+.jobs-container.show {
+  display: grid;
+  max-height: 1000px; /* Ajusta según el contenido */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+/* Cada oferta individual como tarjeta */
+.job-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.job-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Título del trabajo */
+.job-card h4 {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Enlace a la oferta */
+.job-card a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.job-card a:hover {
+  color: #004499;
+}
+
+/* Total de títulos extraídos */
+#total-titles {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.combined-container {
+  width: 100%; /* Ancho completo */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+.total-titles {
+  width: 100%; /* Ancho completo */
+  height: 50px; /* Altura de la barra */
+  background-color: #c8102e; /* Color de fondo de la barra */
+  color: #fff; /* Color del texto */
+  display: flex; /* Usar flexbox para centrar contenido */
+  justify-content: center; /* Centrar contenido horizontalmente */
+  align-items: center; /* Centrar contenido verticalmente */
+  font-size: 1.2em; /* Tamaño de fuente más pequeño */
+  font-weight: bold; /* Negrita */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.cards-container {
+  display: grid; /* Usar Grid para la disposición */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Crear columnas automáticas */
+  gap: 20px; /* Espacio entre tarjetas */
+}
+
+.card {
+  background-color: #fff; /* Color de fondo de las tarjetas */
+  border: 1px solid #ddd; /* Borde sutil */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 15px; /* Espacio interno */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: transform 0.2s, box-shadow 0.2s; /* Animación para hover */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Levantar la tarjeta al pasar el ratón */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+}
+
+.jobs-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.jobs-container.show {
+  max-height: 1000px; /* Puedes ajustar este valor */
+  transition: max-height 0.5s ease-in-out;
+}
+
+/* Botón para aplicar */
+.apply-btn {
+  display: inline-block; /* Mostrar como bloque */
+  margin-top: 10px; /* Margen superior */
+  padding: 10px 15px; /* Espacio interno del botón */
+  background-color: #e63946; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  text-decoration: none; /* Sin subrayado */
+  font-weight: bold; /* Negrita */
+  transition: background-color 0.2s; /* Transición para el hover */
+}
+
+/* Efecto al pasar el ratón sobre el botón */
+.apply-btn:hover {
+  background-color: #d62839; /* Color al pasar el ratón */
+}
+
+/* ----------------------------------- 
+ Estilos del Footer 
+----------------------------------- */
+footer {
+  background-color: #333; /* Negro */
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Estilo del Footer Principal */
+.main-footer {
+  background-color: rgba(0, 0, 0, 0.9); /* Fondo negro con transparencia */
+  color: white;
+  padding: 20px 0;
+  clear: both;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; /* Permitir que los elementos se ajusten en dispositivos más pequeños */
+  padding: 0 20px; /* Espaciado a los lados */
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px; /* Ancho mínimo para cada sección */
+  margin: 10px; /* Margen entre secciones */
+  text-align: center; /* Alineación centrada para los elementos */
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.footer-section p, .footer-section a {
+  font-size: 14px;
+  color: #ccc; /* Color gris claro para texto */
+}
+
+.footer-section a {
+  text-decoration: none; /* Sin subrayado */
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #e63946; /* Color rojo al hacer hover */
+}
+
+.social-links {
+  list-style: none;
+  padding: 0;
+}
+
+.social-links li {
+  margin: 5px 0; /* Espacio entre enlaces */
+}
+
+.social-links a {
+  align-items: center;
+  color: #ccc; /* Color gris claro */
+}
+
+.social-links i {
+  margin-right: 10px; /* Espacio entre icono y texto */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea superior sutil */
+}
+
+/* Estilos para el Popup de Carga */
+.loading-popup {
+  position: fixed; /* Se queda fijo en la pantalla */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro y semi-transparente */
+  display: none; /* Oculto por defecto */
+  justify-content: center; /* Centrar contenido */
+  align-items: center; /* Centrar contenido */
+  z-index: 999; /* Asegura que esté encima de otros elementos */
+}
+
+/* Contenido del popup */
+.loading-content {
+  text-align: center;
+  color: white; /* Texto blanco */
+}
+
+/* Estilos para la barra de carga */
+.loading-bar {
+  width: 100%;
+  background-color: #f3f3f3; /* Fondo claro para la barra */
+  border-radius: 5px;
+  overflow: hidden; /* Para mantener el contenido dentro de la barra */
+  margin-top: 10px;
+}
+
+.progress {
+  height: 20px; /* Altura de la barra de progreso */
+  width: 0; /* Comienza en 0% */
+  background-color: #e63946; /* Color verde */
+  animation: loading 2s infinite; /* Animación de carga */
+}
+
+/* Animación para la barra de carga */
+@keyframes loading {
+  0% { width: 0%; }
+  50% { width: 50%; }
+  100% { width: 100%; }
+}
+/* Estilos para la tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse; /* Para que las celdas se toquen */
+}
+
+.table th,
+.table td {
+  padding: 12px; /* Espaciado interno */
+  text-align: left; /* Alinear texto a la izquierda */
+  border: 1px solid #ccc; /* Borde de las celdas */
+}
+
+.table th {
+  background-color: #f2f2f2; /* Color de fondo de los encabezados */
+}
+
+/* Estilos para hacer la tabla responsive */
+@media (max-width: 768px) {
+  .table,
+  .table thead,
+  .table tbody,
+  .table th,
+  .table td,
+  .table tr {
+      display: block; /* Hacer que cada celda sea un bloque */
+      width: 100%; /* Asegurar que cada bloque ocupe el 100% del ancho */
+  }
+
+  .table thead tr {
+      position: absolute; /* Posicionar el encabezado fuera de flujo */
+      top: -9999px; /* Sacarlo de la vista */
+      left: -9999px; /* Sacarlo de la vista */
+  }
+
+  .table tr {
+      margin-bottom: 15px; /* Espacio entre filas */
+      border: 1px solid #ccc; /* Borde de las filas */
+  }
+
+  .table td {
+      text-align: right; /* Alinear el texto a la derecha */
+      padding-left: 50%; /* Espacio para el texto */
+      position: relative; /* Para el pseudo-elemento */
+  }
+
+  .table td:before {
+      content: attr(data-label); /* Usar el atributo data-label para mostrar el título de la celda */
+      position: absolute; /* Posicionar absolutamente */
+      left: 10px; /* Espacio desde la izquierda */
+      width: calc(50% - 20px); /* Ancho para el pseudo-elemento */
+      padding-right: 10px; /* Espacio en la derecha */
+      text-align: left; /* Alinear texto a la izquierda */
+      font-weight: bold; /* Negrita para los títulos */
+  }
+}
