@@ -313,14 +313,19 @@ main {
 }
 
 /* Total de títulos extraídos */
-#total-titles {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-  border-radius: 5px;
-  font-size: 1.2em;
-  margin-bottom: 20px;
+.total-titles {
+  display: flex;
+  align-items: center; /* Alinea verticalmente al centro */
+  justify-content: space-between; /* Opcional: espacio entre los elementos */
+}
+
+.total-titles h2 {
+  margin: 0; /* Elimina el margen por defecto */
+  padding-right: 10px; /* Espacio entre el título y los filtros */
+}
+
+.used-filters {
+  margin: 0; /* Elimina el margen por defecto */
 }
 
 .combined-container {
@@ -331,7 +336,7 @@ main {
 .total-titles {
   width: 100%; /* Ancho completo */
   height: 50px; /* Altura de la barra */
-  background-color: #c8102e; /* Color de fondo de la barra */
+  background-color: rgba(230, 57, 70, 0.95); /* Color de fondo de la barra */
   color: #fff; /* Color del texto */
   display: flex; /* Usar flexbox para centrar contenido */
   justify-content: center; /* Centrar contenido horizontalmente */

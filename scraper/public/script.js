@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
             barcelona: 9,
             sevilla: 43,
             valencia: 49,
-            ceuta: 15,    // Añadido
-            malaga: 34,    // Añadido
+            ceuta: 15,
+            malaga: 34,
         };
 
         // Crear objeto de mapeo para los filtros de fecha
@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Obtener el ID de provincia correspondiente
-        const selectedProvinceId = provinceMap[selectedLocation] || 'all'; // 'all' si no hay coincidencia
+        const selectedProvinceId = provinceMap[selectedLocation] || 'all';
 
         // Crear objeto de filtros para enviar al servidor
         const filters = {
-            location: selectedLocation, // Ubicación seleccionada
-            keyword: selectedKeyword || '', // Palabra clave
-            date: dateMap[selectedDate] || 'ANY' // Cambia aquí para usar el mapeo
+            location: selectedLocation,
+            keyword: selectedKeyword || '',
+            date: dateMap[selectedDate] || 'ANY'
         };
 
         fetch('/scrape', {
@@ -55,10 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const jobTableBody = document.getElementById('job-table-body');
             jobTableBody.innerHTML = '';
 
-            console.log(data); // Para verificar los datos
-
             const totalTitles = data.length;
             document.getElementById('total-count').innerText = totalTitles;
+
+            // Actualizar información de filtros usados
+            const usedFilters = document.getElementById('used-filters');
+            usedFilters.innerText = totalTitles > 0 
+                ? `ofertas de ${selectedKeyword || 'cualquier tipo'} en ${selectedLocation.charAt(0).toUpperCase() + selectedLocation.slice(1)} de los últimos ${selectedDate === 'ANY' ? 'cualquier fecha' : selectedDate}`
+                : 'No se encontraron ofertas.';
 
             data.forEach(job => {
                 const row = document.createElement('tr');

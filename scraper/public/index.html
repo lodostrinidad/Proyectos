@@ -96,12 +96,14 @@
                 </div>
             </form>
         </aside>
-
+        
         <main>
             <div class="combined-container">
                 <!-- Total de títulos extraídos -->
-                <div id="total-titles" class="total-titles" style="display: none;">
+                <div id="total-titles" class="total-titles" style="display: none; text-align: center;">
                     <h2>Total de Ofertas: <span id="total-count">0</span></h2>
+                    <!-- Filtros utilizados en la búsqueda -->
+                    <p id="used-filters" class="used-filters" style="text-align: center;"></p> <!-- Aquí se mostrarán los filtros usados -->
                 </div>
                 <!-- Contenedor para mostrar las ofertas -->
                 <div id="job-list">
@@ -110,7 +112,8 @@
                             <tr>
                                 <th>Título</th>
                                 <th>Ubicación</th>
-                                <th>VER</th>
+                                <th>Empresa</th> <!-- Nueva columna para la empresa -->
+                                <th>LINK</th>
                             </tr>
                         </thead>
                         <tbody id="job-table-body">
@@ -119,7 +122,8 @@
                     </table>
                 </div>
             </div>
-        </main>          
+        </main>
+          
     
         
     </div>
