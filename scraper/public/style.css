@@ -335,7 +335,7 @@ main {
 
 .total-titles {
   width: 100%; /* Ancho completo */
-  height: 50px; /* Altura de la barra */
+  height: 65px; /* Altura de la barra */
   background-color: rgba(230, 57, 70, 0.95); /* Color de fondo de la barra */
   color: #fff; /* Color del texto */
   display: flex; /* Usar flexbox para centrar contenido */
