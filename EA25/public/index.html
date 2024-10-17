@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA Trading Bot</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-dark text-white">
+    <header class="container-fluid py-3">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-md-4">
+                <h1 class="text-info">FIFA Trading Bot</h1>
+            </div>
+            <div class="col-md-4 text-end">
+                <button id="startBot" class="btn btn-primary me-2">Iniciar Bot</button>
+                <button id="stopBot" class="btn btn-danger me-2">Detener Bot</button>
+                <button id="exportExcel" class="btn btn-success">Exportar en Excel</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Filtros -->
+            <aside class="col-md-3 p-3">
+                <h2>Filtros de Búsqueda</h2>
+                <form id="filterForm">
+                    <div class="mb-3">
+                        <label for="playerName" class="form-label">Nombre del Jugador</label>
+                        <input type="text" class="form-control" id="playerName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="minPrice" class="form-label">Precio Mínimo</label>
+                        <input type="number" class="form-control" id="minPrice" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="maxPrice" class="form-label">Precio Máximo</label>
+                        <input type="number" class="form-control" id="maxPrice" required>
+                    </div>
+                    <button type="submit" class="btn btn-info">Buscar</button>
+                </form>
+            </aside>
+
+            <!-- Contenido principal -->
+            <main class="col-md-9 p-3">
+                <h2>Historial de Transacciones</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow mb-4">
+                            <div class="card-header">Últimas Transacciones</div>
+                            <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Jugador</th>
+                                            <th>Precio</th>
+                                            <th>Fecha</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Messi</td>
+                                            <td>1000000</td>
+                                            <td>2023-01-01</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Ronaldo</td>
+                                            <td>950000</td>
+                                            <td>2023-01-02</td>
+                                        </tr>
+                                        <!-- Más filas aquí -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-secondary">Ver más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 FIFA Trading Bot. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

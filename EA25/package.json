@@ -1,0 +1,15 @@
+{
+    "name": "fifa-bot",
+    "version": "1.0.0",
+    "description": "Un bot para FIFA que analiza transacciones de jugadores",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2"
+    },
+    "author": "Sh4doW",
+    "license": "ISC"
+  }
+  

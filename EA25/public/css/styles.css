@@ -1,0 +1,251 @@
+/* Fuentes y colores generales */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #0f3460;
+    border-bottom: 2px solid #00a8e1;
+    padding: 15px 0;
+}
+
+header h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin: 0;
+    color: #00a8e1;
+}
+
+header .btn {
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+header .btn:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo del aside (filtros de búsqueda) */
+aside {
+    background-color: #1f1f3d;
+    border-right: 2px solid #00a8e1;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+aside h2 {
+    color: #00a8e1;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+aside .form-control {
+    background-color: #353552;
+    color: #ffffff;
+    border: 1px solid #00a8e1;
+    transition: border 0.3s ease;
+}
+
+aside .form-control:focus {
+    background-color: #40405e;
+    border-color: #00a8e1;
+    box-shadow: 0 0 5px rgba(0, 168, 225, 0.5);
+}
+
+aside .form-label {
+    color: #bbb;
+}
+
+aside .btn-info {
+    background-color: #00a8e1;
+    border: none;
+    color: #16213e;
+    font-weight: bold;
+    padding: 12px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+aside .btn-info:hover {
+    background-color: #0099cc;
+}
+
+/* Estilos de la tabla de historial de transacciones */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo del encabezado de la tabla */
+table th {
+    background-color: #00a8e1; /* Color de fondo de la cabecera */
+    color: #ffffff; /* Color del texto en la cabecera */
+    padding: 15px;
+    border: none;
+    text-align: left;
+}
+
+
+table td {
+    background-color: #353552;
+    color: #ffffff;
+    padding: 15px;
+    border: 1px solid #00a8e1;
+    transition: background-color 0.3s ease;
+}
+
+table tr:nth-child(even) {
+    background-color: #292c4c;
+    color: #ffffff;
+}
+
+table tr:hover {
+    background-color: #40405e;
+    transition: background-color 0.3s;
+}
+
+/* Estilos para los botones de exportación */
+#exportExcel {
+    background-color: #28a745;
+    border: none;
+    font-weight: bold;
+    padding: 12px 20px;
+    transition: background-color 0.3s ease;
+}
+
+#exportExcel:hover {
+    background-color: #218838;
+}
+
+/* Footer */
+footer {
+    background-color: #0f3460;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    color: #bbb;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    aside {
+        position: relative;
+        height: auto;
+        padding: 15px;
+        border-right: none;
+    }
+
+    header .btn {
+        margin-bottom: 10px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    table {
+        font-size: 0.9rem;
+    }
+
+    aside h2 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Estilos adicionales */
+.btn-large {
+    padding: 15px 25px;
+    font-size: 1.1rem;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.alert-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.alert-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Estilos de tarjetas */
+.card {
+    background-color: #1f1f3d;
+    color: #ffffff;
+    border: 1px solid #00a8e1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.card-header {
+    background-color: #00a8e1;
+    color: #ffffff;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 15px;
+    color: #ffffff;
+}
+
+.card-footer {
+    background-color: #353552;
+    text-align: right;
+    padding: 10px;
+}
+
+.card-footer .btn {
+    margin-left: 5px;
+}
+
+/* Estilos de transiciones */
+.transition {
+    transition: all 0.3s ease;
+}
+
+/* Efectos de sombra */
+.shadow {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
