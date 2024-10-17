@@ -5,9 +5,13 @@
     box-sizing: border-box;
 }
 
+/* Estilos globales */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1; /* Coloca el fondo debajo de todo */
 }
 
 /* Estilos para el encabezado */
@@ -18,6 +22,32 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    padding: 10px 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    flex: 0 0 auto; /* No crecer, no encogerse */
+}
+
+.navbar-brand img {
+    max-height: 50px; /* Asegura que el logo no exceda este tamaño */
+    margin-left: -65px; /* Ajusta el logo medio cm a la izquierda */
+}
+
+.navbar-brand a {
+    flex: 1; /* Permite que el logo ocupe el espacio disponible */
+    text-align: center; /* Centra el logo dentro del contenedor */
+}
+
+.navbar-nav {
+    display: flex;
 }
 
 .navbar-nav .nav-link {
@@ -29,9 +59,56 @@ header {
     color: #f39c12;
 }
 
-/* Estilos para la sección Parallax */
+/* Animación para el modal */
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal.show {
+    animation: slideIn 0.5s forwards; /* Duración de la animación */
+}
+
+/* Estilos para el botón de usuario */
+.user-card {
+    position: relative;
+}
+
+.user-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: white;
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 999;
+}
+
+.user-card:hover .user-menu {
+    display: block;
+}
+
+.user-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.user-menu a:hover {
+    background: #f39c12;
+    color: white;
+}
+
+/* Efecto Parallax */
 .parallax {
-    background-image: url('../../uploads/imagen2.jpg'); /* Cambia la imagen */
     height: 100vh;
     background-attachment: fixed;
     background-position: center;
@@ -63,102 +140,56 @@ header {
     background: #e67e22;
 }
 
-.service-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.service-item {
-    width: 30%;
-    margin: 20px 0;
-}
-
-/* ========================
-   Estilos del Modal
-   ======================== */
-   .footer {
-    padding: 20px 0;
-}
-
-.footer p {
-    margin: 0;
-}
-
-.social-icons {
-    margin-top: 10px;
-}
-
-.social-icons a {
-    margin: 0 10px;
-    font-size: 1.5em; /* Tamaño de los iconos */
-    transition: transform 0.3s;
-}
-
-.social-icons a:hover {
-    transform: scale(1.2); /* Efecto de zoom al pasar el ratón */
-}
-
-.modal-content {
-    background-color: rgba(255, 255, 255, 0.9) !important; /* Fondo blanco semi-transparente */
-    border: 2px solid #ff0000 !important; /* Borde azul */
-    border-radius: 15px !important; /* Esquinas más redondeadas */
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2) !important; /* Sombra más intensa */
-}
-
-.modal-header {
-    border-bottom: 2px solid #007bff !important; /* Borde inferior azul */
-}
-
-.modal-title {
-    color: #007bff !important; /* Color del título azul */
-    font-weight: bold;
-}
-
-.modal-body {
-    padding: 30px !important; /* Espaciado interior */
-}
-
-.btn-primary {
-    background-color: #007bff !important; /* Color de fondo del botón */
-    border: none !important; /* Sin borde */
-}
-
-.btn-primary:hover {
-    background-color: #0056b3 !important; /* Color más oscuro al pasar el ratón */
-}
-
-.modal-footer {
-    border-top: none !important; /* Quitar el borde superior */
-    padding: 15px !important; /* Espaciado interior */
-}
-
-
-.bg-light {
-    background: transparent; /* Sin fondo sólido para la sección de contacto */
-}
-
-/* Parallax Section */
-.parallax-bg {
-    background-image: url('../../uploads/imagen3.jpg'); /* Aquí pones la imagen de fondo */
-    background-attachment: fixed; /* Esto es lo que crea el efecto parallax */
+/* Fondo de la sección contenedora */
+.container-bg {
+    background-size: cover; /* Ajustar el fondo al tamaño del container */
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 100px 0; /* Espaciado general para cada sección */
+    padding: 100px 0; /* Espaciado general para la sección */
+    margin: 100px auto;
 }
 
-/* General styles for each section */
+/* Estilos generales para las secciones */
 .section {
-    background-color: rgba(255, 255, 255, 0.6); /* Fondo blanco semitransparente para el contenido */
+    background-color: rgba(100, 97, 97, 0.8);
     padding: 50px;
-    margin: 50px auto;
-    max-width: 1200px;
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra suave para destacar cada sección */
+    margin: 20px auto;
+    height: 400px; /* Altura ajustada a 400px */
+    width: 90%;
+    max-width: 1200px; /* Sección más ancha */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Ocultas inicialmente */
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* Espaciado entre secciones */
+.section.visible {
+    opacity: 1; /* Hacer visibles las secciones cuando entren en la pantalla */
+}
+
+#about.section {
+    transform: translateY(50px);
+}
+
+#about.section.visible {
+    transform: translateY(0);
+}
+
+#services.section {
+    transform: translateX(-100%);
+}
+
+#services.section.visible {
+    transform: translateX(0);
+}
+
+#contact.section {
+    transform: scale(0.8);
+}
+
+#contact.section.visible {
+    transform: scale(1);
+}
+
 .section h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
@@ -184,16 +215,37 @@ button[type="submit"] {
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el contenido del modal */
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo con transparencia */
+    border: 2px solid #007bff; /* Borde azul */
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.7); /* Sombra azul */
+    opacity: 0.95; /* Transparencia de 0.8 */
 }
 
 /* Media queries para móvil */
 @media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .parallax-bg {
-        background-attachment: scroll; /* Deshabilitar parallax en dispositivos móviles */
+        background-attachment: scroll;
     }
 
     .section {
         padding: 30px;
+        width: 95%; /* Ajuste para móviles */
+    }
+
+    .user-menu {
+        right: 0;
     }
 }
