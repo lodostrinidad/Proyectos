@@ -1,13 +1,16 @@
 <?php
-$host = 'localhost';
-$db = 'gestor_archivos3';
-$user = 'root';
-$pass = "";
+// db_connect.php
+
+$host = 'localhost'; // Cambia si es necesario
+$db_name = 'gestor_archivos3'; // Cambia si es necesario
+$username = 'root'; // Cambia si es necesario
+$password = ''; // Cambia si es necesario
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn = new PDO("mysql:host=$host;dbname=$db_name;charset=utf8mb4", $username, $password);
+    // Configuración de errores
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo "Error en la conexión: " . $e->getMessage();
+    die("Connection failed: " . $e->getMessage());
 }
 ?>
