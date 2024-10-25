@@ -42,8 +42,6 @@
             <a class="nav-link active" href="admin_dashboard.php"><i class="fas fa-tachometer-alt"></i><span> Dashboard</span></a>
             <a class="nav-link" id="usersLink" href="#"><i class="fas fa-users"></i><span> Usuarios</span></a>
             <a class="nav-link" id="tablesLink" href="#"><i class="fas fa-table"></i><span> Tablas</span></a>
-            <a class="nav-link" id="utilitiesLink" href="#"><i class="fas fa-tools"></i><span> Utilidades</span></a>
-            <a class="nav-link" id="pagesLink" href="#"><i class="fas fa-file-alt"></i>&nbsp;<span> Páginas</span></a>
             <a class="nav-link" id="chartsLink" href="#"><i class="fas fa-chart-line"></i><span> Gráficos</span></a>
         </nav>
     </div>
