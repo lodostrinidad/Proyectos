@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobToday Data Extractor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: 500px; /* Aumentar el ancho del popup */
+            padding: 20px; /* Añadir un poco de padding */
+        }
+        h1 {
+            font-size: 20px;
+            text-align: center; /* Centrar el título */
+            margin-bottom: 20px;
+        }
+        button {
+            display: block; /* Mostrar botones en bloque */
+            width: 100%; /* Hacer que los botones ocupen todo el ancho */
+            padding: 10px; /* Espaciado interno */
+            margin-bottom: 10px; /* Margen entre botones */
+            background-color: #007BFF; /* Color de fondo azul */
+            color: white; /* Color del texto */
+            border: none; /* Sin bordes */
+            border-radius: 5px; /* Bordes redondeados */
+            cursor: pointer; /* Cursor en forma de mano */
+            font-size: 16px; /* Tamaño de fuente */
+        }
+        button:disabled {
+            background-color: #ccc; /* Color de fondo para botones deshabilitados */
+            cursor: not-allowed; /* Cursor de no permitido */
+        }
+        button:hover:not(:disabled) {
+            background-color: #0056b3; /* Color de fondo al pasar el mouse */
+        }
+        #count {
+            margin: 10px 0; /* Espaciado superior e inferior */
+            font-weight: bold; /* Texto en negrita */
+        }
+        #results {
+            margin-top: 10px;
+            overflow-x: auto; /* Permitir desplazamiento horizontal */
+        }
+        table {
+            width: 100%; /* Ancho completo para la tabla */
+            border-collapse: collapse; /* Unir bordes de la tabla */
+            margin-top: 10px; /* Margen superior para la tabla */
+        }
+        th, td {
+            border: 1px solid #ccc; /* Borde para celdas */
+            padding: 8px; /* Espaciado interno para celdas */
+            text-align: left; /* Alinear texto a la izquierda */
+        }
+        th {
+            background-color: #f2f2f2; /* Color de fondo para encabezados */
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Color de fondo para filas pares */
+        }
+    </style>
+</head>
+<body>
+    <h1>Extractor de Datos</h1>
+    <button id="extractButton">Extraer Datos</button>
+    <button id="exportButton" disabled>Exportar</button>
+    <div id="count"></div>
+    <div id="results"></div>
+    <script src="popup.js"></script>
+</body>
+</html>
