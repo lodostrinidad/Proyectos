@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Scraping</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { text-align: center; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Resultados de Scraping</h1>
+    <div id="results"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            chrome.storage.local.get('results', (data) => {
+                const resultsContainer = document.getElementById('results');
+                const resultsData = data.results || [];
+
+                // Mostrar resultados en listas
+                resultsData.forEach((resultArray, index) => {
+                    const resultBlock = document.createElement('div');
+                    resultBlock.innerHTML = `<h4>Resultados del Selector ${index + 1}</h4>`;
+                    
+                    const list = document.createElement('ul');
+                    resultArray.forEach(item => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = item;
+                        list.appendChild(listItem);
+                    });
+                    resultBlock.appendChild(list);
+                    resultsContainer.appendChild(resultBlock);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
