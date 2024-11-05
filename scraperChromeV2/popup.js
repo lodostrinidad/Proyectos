@@ -6,12 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const selectedSelectors = [];
     const resultsData = []; // Para almacenar los resultados
 
-    // Cargar selectores de chrome.storage al abrir el popup
     chrome.storage.local.get('selectors', (data) => {
         if (data.selectors) {
-            data.selectors.forEach(selector => {
-                selectedSelectors.push(selector);
-            });
+            selectedSelectors.push(...data.selectors);
         }
     });
 
@@ -19,8 +16,12 @@ document.addEventListener('DOMContentLoaded', function () {
     selectButton.addEventListener('click', () => {
         alert("Por favor, selecciona elementos en la página. Haz clic en ellos para guardar los selectores.");
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            selectedSelectors.length = 0; // Reiniciar la lista de selectores
-            chrome.tabs.sendMessage(tabs[0].id, { type: 'start-selection' });
+            selectedSelectors.length = 0;
+            chrome.tabs.sendMessage(tabs[0].id, { type: 'start-selection' }, (response) => {
+                if (chrome.runtime.lastError) {
+                    alert("El script de contenido no está disponible. Asegúrate de que estás en la página correcta.");
+                }
+            });
         });
     });
 
@@ -38,83 +39,69 @@ document.addEventListener('DOMContentLoaded', function () {
     // Escuchar los mensajes del contenido
     chrome.runtime.onMessage.addListener((request) => {
         if (request.type === 'scraping-result') {
-            resultsData.push(request.data);
+            const structuredData = formatData(request.data);
+            resultsData.push(...structuredData);
             displayResults();
-            // Guardar resultados en chrome.storage
             chrome.storage.local.set({ results: resultsData });
         }
     });
 
+    // Función para estructurar los datos como array de objetos
+    function formatData(scrapedArrays) {
+        const maxRows = Math.max(...scrapedArrays.map(arr => arr.length));
+        const formattedData = [];
+
+        for (let i = 0; i < maxRows; i++) {
+            const row = {};
+            selectedSelectors.forEach((selector, index) => {
+                row[selector.name] = scrapedArrays[index][i] || '';
+            });
+            formattedData.push(row);
+        }
+        return formattedData;
+    }
+
     // Función para mostrar los resultados
     function displayResults() {
-        resultsDisplay.innerHTML = ''; // Limpiar resultados previos
-
-        // Resultados por separado
-        const separatedResults = document.createElement('div');
-        separatedResults.innerHTML = '<h3>Resultados Separados</h3>';
-        resultsData.forEach((resultArray, index) => {
-            const resultBlock = document.createElement('div');
-            resultBlock.innerHTML = `<h4>Selector ${index + 1}</h4>`;
-            
-            // Listar cada resultado en una línea nueva
-            const list = document.createElement('ul');
-            resultArray.forEach(item => {
-                const listItem = document.createElement('li');
-                listItem.textContent = item;
-                list.appendChild(listItem);
-            });
-            resultBlock.appendChild(list);
-            separatedResults.appendChild(resultBlock);
-        });
-        resultsDisplay.appendChild(separatedResults);
-
-        // Tabla combinada
+        resultsDisplay.innerHTML = '';
         const table = document.createElement('table');
         const headerRow = document.createElement('tr');
 
-        // Crear encabezados de la tabla
-        selectedSelectors.forEach((selector, index) => {
+        // Crear encabezados de la tabla con los nombres de los selectores
+        selectedSelectors.forEach(selector => {
             const headerCell = document.createElement('th');
-            headerCell.textContent = `Selector ${index + 1}`;
+            headerCell.textContent = selector.name;
             headerRow.appendChild(headerCell);
         });
         table.appendChild(headerRow);
 
-        // Determinar el número de filas en la tabla
-        const maxRows = Math.max(...resultsData.map(arr => arr.length));
-
-        // Llenar la tabla con los datos
-        for (let i = 0; i < maxRows; i++) {
+        // Crear las filas de la tabla con los datos correspondientes
+        resultsData.forEach(rowData => {
             const row = document.createElement('tr');
-            resultsData.forEach((resultArray) => {
+            selectedSelectors.forEach(selector => {
                 const cell = document.createElement('td');
-                cell.textContent = resultArray[i] ? resultArray[i] : ''; // Mostrar elementos en la misma celda
+                cell.textContent = rowData[selector.name];
                 row.appendChild(cell);
             });
             table.appendChild(row);
-        }
+        });
 
         resultsDisplay.appendChild(table);
+        resultsDisplay.innerHTML += `<p>Total de elementos encontrados: ${resultsData.length}</p>`;
 
-        // Contar elementos
-        const count = resultsData.reduce((acc, curr) => acc + curr.length, 0);
-        resultsDisplay.innerHTML += `<p>Total de elementos encontrados: ${count}</p>`;
-
-        // Botón para abrir resultados en resultados.html
         const viewInPopupButton = document.createElement('button');
         viewInPopupButton.textContent = 'Ver Resultados en Ventana Emergente';
         viewInPopupButton.addEventListener('click', openResultsInResultsHTML);
         resultsDisplay.appendChild(viewInPopupButton);
     }
 
-    // Función para abrir resultados en resultados.html
     function openResultsInResultsHTML() {
         chrome.storage.local.set({ results: resultsData }, () => {
-            chrome.tabs.create({ url: chrome.runtime.getURL("resultados.html") }); // Abre resultados.html
+            chrome.tabs.create({ url: chrome.runtime.getURL("resultados.html") });
         });
     }
 
-    // Funcionalidad para exportar resultados
+    // Exportación de resultados
     exportButton.addEventListener('click', () => {
         const format = prompt("Elige el formato de exportación: (json/csv)").toLowerCase();
         if (format === 'json') {
@@ -126,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Función para exportar resultados a JSON
     function exportToJson() {
         const dataStr = JSON.stringify(resultsData);
         const blob = new Blob([dataStr], { type: "application/json" });
@@ -138,19 +124,16 @@ document.addEventListener('DOMContentLoaded', function () {
         URL.revokeObjectURL(url);
     }
 
-    // Función para exportar resultados a CSV
     function exportToCsv() {
         const csvRows = [];
-        // Encabezados vacíos
-        const headers = selectedSelectors.map(() => '');
+        const headers = selectedSelectors.map(sel => sel.name);
         csvRows.push(headers.join(','));
 
-        // Determinar el número de filas en la tabla
         const maxRows = Math.max(...resultsData.map(arr => arr.length));
         for (let i = 0; i < maxRows; i++) {
             const row = [];
             resultsData.forEach((resultArray) => {
-                row.push(resultArray[i] ? resultArray[i] : '');
+                row.push(resultArray[i] || '');
             });
             csvRows.push(row.join(','));
         }

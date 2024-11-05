@@ -4,4 +4,4 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             chrome.tabs.sendMessage(tabs[0].id, { action: 'displayResults', results: request.results });
         });
     }
-});
+}); 

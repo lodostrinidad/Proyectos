@@ -1,0 +1,164 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar contenido horizontalmente */
+    background-color: #f9f9f9; /* Color de fondo claro */
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 0; /* Sin padding alrededor del body */
+    margin: 0; /* Sin margen alrededor del body */
+}
+
+header {
+    width: 100%; /* Ancho completo */
+    background-color: red; /* Fondo rojo */
+    padding: 20px; /* Espacio interno */
+    color: white; /* Color de texto blanco */
+    text-align: center; /* Centrar texto */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    display: flex;
+    flex-direction: column; /* Alinear elementos en columna */
+    align-items: center; /* Centrar elementos */
+}
+
+.header-buttons {
+    margin-top: 10px; /* Espacio entre el título y los botones */
+}
+
+.header-buttons button {
+    background-color: white; /* Fondo blanco */
+    border: none; /* Sin borde */
+    color: red; /* Color del icono */
+    cursor: pointer;
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 0 5px; /* Espaciado entre botones */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+.header-buttons button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo al hacer hover */
+}
+
+#dropdown-menu {
+    position: fixed; /* Mantener el menú fijo */
+    left: 80px; /* Mantener en el lateral izquierdo */
+    top: 146px; /* Ajustar la posición desde el botón */
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: none; /* Oculto por defecto */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+#dropdown-menu.hidden {
+    display: none; /* Asegurarse de que esté oculto */
+}
+
+#dropdown-menu:not(.hidden) {
+    display: block; /* Mostrar cuando no esté oculto */
+}
+
+#dropdown-menu button {
+    display: flex; /* Flex para alinear icono y texto */
+    align-items: center; /* Centrar verticalmente */
+    margin: 5px 0;
+    padding: 10px;
+    color: white;
+    background-color: red;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+}
+
+#dropdown-menu button:hover {
+    background-color: darkred;
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+    margin: 0; /* Sin margen */
+    width: 100%; /* Ancho completo */
+    max-width: 100%; /* Asegurarse de que no tenga un ancho máximo */
+    text-align: center; /* Centrar texto */
+}
+
+#results {
+    margin-top: 20px; /* Espacio entre el menú y los resultados */
+    width: calc(100% - 20px); /* Ancho de la tabla (restar margen) */
+    margin-left: 10px; /* Margen izquierdo */
+    margin-right: 10px; /* Margen derecho */
+}
+
+
+#results table {
+    width: 100%; /* Tabla ocupa el 100% de su contenedor */
+    border-collapse: collapse;
+    border-radius: 5px; /* Bordes redondeados para la tabla */
+    overflow: hidden; /* Para evitar bordes en los extremos */
+}
+
+#results th,
+#results td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+#results th {
+    font-size: 1.2em; /* Tamaño de fuente más grande */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    color: white; /* Color de texto blanco */
+    background-color: red; /* Fondo rojo */
+}
+
+#results th:first-child,
+#results td:first-child {
+    max-width: 50px; /* Máximo ancho para la columna de checkboxes */
+    width: 50px; /* Ancho fijo */
+    text-align: center; /* Centrar el contenido */
+}
+
+#results tr:hover {
+    background-color: lightgrey;
+}
+
+.dark-theme #results th,
+.dark-theme #results td {
+    border: 1px solid white;
+}
+
+.editable {
+    cursor: pointer;
+    background-color: #f9f9f9;
+}
+
+.editable:hover {
+    background-color: #e0e0e0;
+}
+
+.dark-theme .editable {
+    background-color: #444;
+}
+
+.dark-theme .editable:hover {
+    background-color: #555;
+}
+
+button.active {
+    background-color: darkgreen; /* Color para indicar acción activa */
+}
+
+.highlight {
+    background-color: #007bff; /* Color para resaltar el botón */
+    color: white; /* Color de texto para el botón resaltado */
+}
+
+.dark-theme {
+    background-color: #333; /* Fondo oscuro */
+    color: white; /* Color de texto claro */
+}

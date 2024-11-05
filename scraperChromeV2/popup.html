@@ -3,71 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Scraper</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            width: 300px;
-            padding: 10px;
-            background-color: #f8f8f8;
-            color: #333;
-        }
-        h1 {
-            text-align: center;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        #selector-list {
-            list-style: none;
-            padding: 0;
-        }
-        #results {
-            margin-top: 20px;
-            white-space: pre-wrap;
-            overflow-y: auto;
-            max-height: 300px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        tr:hover {
-            background-color: #ddd;
-        }
-    </style>
+    <title>Scraping Extension</title>
 </head>
 <body>
-    <h1>Web Scraper</h1>
-    <button id="select-elements">Select Elements</button>
-    <button id="start-scraping">Start Scraping</button>
-    <button id="export-results">Export Results</button>
-    <h2>Selected Selectors</h2>
-    <ul id="selector-list"></ul>
-    <h2>Results</h2>
+    <h2>Scraping Extension</h2>
+    <button id="select-elements">Seleccionar Elementos</button>
+    <button id="start-scraping">Iniciar Scraping</button>
+    <button id="export-results">Exportar Resultados</button>
     <div id="results"></div>
     <script src="popup.js"></script>
 </body>
