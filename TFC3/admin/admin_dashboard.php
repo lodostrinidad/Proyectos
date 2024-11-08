@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Custom CSS -->
     <link href="../css/admin_dashboard.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <header>
@@ -20,7 +24,7 @@
     <button id="toggleButton" class="btn-user">☰</button> <!-- Icono de menú -->
     <div class="dropdown">
         <button class="btn btn-user" id="userButton" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fas fa-user"></i>&nbsp;
+            <i class="fas fa-user"></i>&nbsp;
             <?php
             session_start();
             $username = $_SESSION['username'] ?? 'Usuario';
@@ -47,7 +51,7 @@
     </div>
 
     <div class="content" id="content">
-        <!-- Contenido dinámico se cargará aquí -->
+        <!-- Contenido estático del dashboard que se muestra inicialmente -->
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
@@ -110,15 +114,14 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../js/chart.js"></script>
 <script src="../js/admin_dashboard.js"></script>
-<script>
-    // dashboard.js
 
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         const toggleButton = document.getElementById('toggleButton');
         const sidebar = document.querySelector('.sidebar');
 
         toggleButton.addEventListener('click', function() {
-            sidebar.classList.toggle('active'); // Alterna la clase para mostrar/ocultar el sidebar
+            sidebar.classList.toggle('active');
         });
     });
 
@@ -131,10 +134,9 @@
     // Cargar Tablas
     document.getElementById('tablesLink').addEventListener('click', function(event) {
         event.preventDefault();
-        loadContent('../includes/show_tables.php'); // Este archivo debe listar las tablas de la base de datos
+        loadContent('../includes/show_tables.php');
     });
 
-    // Función para cargar contenido dinámicamente
     function loadContent(url) {
         fetch(url)
             .then(response => {
@@ -145,11 +147,22 @@
             })
             .then(html => {
                 document.querySelector('.content').innerHTML = html;
+                let scripts = document.querySelectorAll('.content script');
+                scripts.forEach(script => {
+                    let newScript = document.createElement('script');
+                    if (script.src) {
+                        newScript.src = script.src;
+                    } else {
+                        newScript.textContent = script.textContent;
+                    }
+                    document.body.appendChild(newScript);
+                });
             })
             .catch(error => {
                 console.error('Error:', error);
             });
     }
 </script>
+
 </body>
 </html>
