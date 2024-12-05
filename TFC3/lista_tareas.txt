@@ -1,0 +1,61 @@
+### Lista de Tareas para el Proyecto de Gestor de Archivos
+
+#### **1. Preparación del Entorno**
+   - [o] **Instalar y configurar servidor web** (XAMPP, WAMP, o LAMP).
+   - [o] **Crear base de datos**.
+
+#### **2. Configuración de la Base de Datos**
+   - [o] **Crear tablas en la base de datos**.
+   - [o] **Insertar datos iniciales** en las tablas necesarias (usuarios, tipos de archivos, etc.).
+
+#### **3. Desarrollo del Backend**
+   - [o] **Conexión a la base de datos** (`db_connect.php`).
+   - [o] **Sistema de Autenticación**:
+     - [o] Registro de usuarios.
+     - [o] Inicio de sesión.
+     - [o] Cierre de sesión.
+   - [o] **Gestión de Usuarios** (para admin):
+     - [o] Crear, editar y eliminar usuarios.
+     - [o] Asignar roles a los usuarios.
+   - [ ] **Gestión de Archivos**:
+     - [ ] Subida de archivos.
+     - [ ] Crear, mover, y eliminar archivos y carpetas.
+     - [ ] Compartir archivos entre usuarios.
+   - [ ] **Gestión de Comentarios y Etiquetas**:
+     - [ ] Añadir comentarios a archivos.
+     - [ ] Añadir y gestionar etiquetas.
+   - [ ] **Gestión de Historial de Archivos**.
+   - [ ] **Sistema de Notificaciones**:
+     - [ ] Notificaciones de cambios en archivos.
+     - [ ] Notificaciones de archivos compartidos.
+   - [ ] **Implementar Chat**:
+     - [ ] Sistema de envío y recepción de mensajes.
+
+#### **4. Desarrollo del Frontend**
+   - [ ] **Diseño de la Interfaz de Usuario**:
+     - [ ] Crear un diseño inicial para el login y registro.
+     - [ ] Crear dashboards para admin, manager y usuario.
+   - [ ] **Implementación de Funcionalidades en el Frontend**:
+     - [ ] Crear formularios para la subida de archivos.
+     - [ ] Crear interfaces para la gestión de archivos y carpetas.
+     - [ ] Integrar el sistema de chat.
+     - [ ] Mostrar notificaciones en la interfaz.
+   - [ ] **Asegurarse de que el diseño sea responsive**.
+
+#### **5. Pruebas y Corrección de Errores**
+   - [ ] **Pruebas de funcionalidad** de todas las características.
+   - [ ] **Depuración** de errores encontrados durante las pruebas.
+   - [ ] **Asegurarse de que la seguridad sea robusta** (validación de entrada, protección contra inyecciones SQL, etc.).
+
+#### **6. Documentación**
+   - [ ] **Documentar el código** y las funciones del proyecto.
+   - [ ] **Crear una guía de usuario** para ayudar a los usuarios a navegar por la aplicación.
+
+#### **7. Despliegue**
+   - [ ] **Subir el proyecto a un servidor** (opcional).
+   - [ ] **Configuración de dominio** y seguridad (SSL).
+
+### Consejos para el Progreso:
+- **Divide y vencerás**: Trabaja en tareas pequeñas y específicas para no sentirte abrumado.
+- **Uso de control de versiones**: Considera usar Git para realizar un seguimiento de los cambios y colaborar si trabajas en equipo.
+- **Revisión constante**: Realiza revisiones regulares del código y la funcionalidad para asegurarte de que todo se está implementando correctamente.
